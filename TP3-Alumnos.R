@@ -28,7 +28,7 @@ dummyCols <- c("sex", "Pstatus", "address",
                "internet", "romantic", "freetime")
 df_alumnos <- dummy_cols(df_alumnos,  select_columns = dummyCols)
 df_alumnos <- select(df_alumnos, -dummyCols)
-##Elimino el nombre de la escuela yaque es un dato irrelevante para el analisis
+##Elimino la variable escuela yaque es un dato irrelevante para el analisis
 df_alumnos <- select(df_alumnos, -c("school"))
 ## Vericamos coolinealidad. Funciona? lo probe y no funco capaz hay que cambiar cosas o hacer otra cosa
 ggpairs(df_alumnos, lower = list(continuous = "smooth"), 

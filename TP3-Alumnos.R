@@ -9,9 +9,11 @@ library(GGally)
 library(fastDummies)
 library(magrittr) # needs to be run every time you start R and want to use %>%
 library(dplyr)    # alternatively, this also loads %>%
+##Seteo mi working directory
+setwd("~/Documents/UNO Facultad/Explotacion de datos/TP3-ExplotacionDeDatos")
 
 ## Importo datos
-df_alumnos <- read_delim("https://doc-0o-ac-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/i2027oqeur1hikspvce9vka503b7umge/1569369600000/12156006334743028626/*/12ts1iY-OBkXTnLFjAPLDVcDHQU8k0bA5?e=download", 
+df_alumnos <- read_delim("student-mat.csv", 
                          ";", escape_double = FALSE, trim_ws = TRUE)
 View(df_alumnos)
  
@@ -26,8 +28,10 @@ dummyCols <- c("sex", "Pstatus", "address",
                "guardian", "schoolsup","famsup", "paid", 
                "activities", "nursery", "higher",
                "internet", "romantic", "freetime")
-df_alumnos <- dummy_cols(df_alumnos,  select_columns = dummyCols)
-df_alumnos <- select(df_alumnos, -dummyCols)
+##df_alumnos <- dummy_cols(df_alumnos,  select_columns = dummyCols)
+##df_alumnos <- select(df_alumnos, -dummyCols)
+##Elimino todas las variables dummy para trabajar solo con las numericas
+df_alumnos <- select(df_alumnos, -c(dummyCols))
 ##Elimino la variable escuela yaque es un dato irrelevante para el analisis
 df_alumnos <- select(df_alumnos, -c("school"))
 ## Vericamos coolinealidad. Funciona? lo probe y no funco capaz hay que cambiar cosas o hacer otra cosa

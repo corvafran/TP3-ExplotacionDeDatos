@@ -34,7 +34,16 @@ dummyCols <- c("sex", "Pstatus", "address",
 df_alumnos <- select(df_alumnos, -c(dummyCols))
 ##Elimino la variable escuela yaque es un dato irrelevante para el analisis
 df_alumnos <- select(df_alumnos, -c("school"))
+##
 ## Vericamos coolinealidad. Funciona? lo probe y no funco capaz hay que cambiar cosas o hacer otra cosa
 ggpairs(df_alumnos, lower = list(continuous = "smooth"), 
         diag = list(continuous = "bar"),
         axisLabels = "none")
+
+head(df_alumnos)
+
+glimpse(df_alumnos)
+##Funcion summary
+summary(df_alumnos) 
+##Test de correlación
+pairs(df_alumnos)
